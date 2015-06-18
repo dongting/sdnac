@@ -7,6 +7,6 @@ Access control for SDN controllers
 - pyzmq-14.6.0 (`pip install pyzmq` or http://zeromq.org/bindings:python)
 
 ## USAGE
-to run: `python main.py [policy_file]`
-to test: `python test.py`
+- to run: `python main.py [policy_file]`
+- to test: `python test.py`
 
