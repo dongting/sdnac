@@ -26,7 +26,6 @@ class Server(object):
     #     self.rpc_server.serve_forever()
     
     def request(self, req):
-        print 'request received:', req
         return self.req_callback(req)
     
     

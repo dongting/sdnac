@@ -1,1 +1,4 @@
-#import api
+import rpc
+
+Server = rpc.Server
+

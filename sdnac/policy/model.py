@@ -19,7 +19,7 @@ class Policy(object):
     def __init__(self):
         self.id = None  # int
         self.name = None  # name
-        self.default = None  # 'permit' or 'deny'
+        self.default = None  # 'permit' or 'deny', the default decision of this Policy (note this is opposite of "override" concept)
         self.rules = []  # list of Rule
     
     def __str__(self):
@@ -39,7 +39,7 @@ class Rule(object):
     def __init__(self):
         self.id = None  # int
         self.pid = None  # int, the id of the Policy it belongs
-        self.pdefault = None  # 'permit' or 'deny', the default decision of this Policy
+        self.pdefault = None  # 'permit' or 'deny'
         self.priority = None  # int
         self.match = Match()  # Match object
         self.decision = None  # 'permit' or 'deny'

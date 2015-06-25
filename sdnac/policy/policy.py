@@ -11,7 +11,7 @@ class PolicyEngine(object):
         self.policyset = self.pobj.get_policyset()
         self.load_policyset()
         
-        # print self.policyset
+        print self.policyset
         # for p in self.policyset:
         #     for r in p:
         #         for key, val in r:
@@ -22,6 +22,13 @@ class PolicyEngine(object):
         return self.pobj.serialize(obj)
     
     def load_policyset(self):
+        '''
+        fast_match converts a mapping of (key, val) in the format of
+        a.b.c.d=val
+        where a.b.c.d forms the key in a hierarchical form
+        and converts it to fast_match[a][b][c][d][val]=rule (note last element val)
+        so given an incoming request we can quickly identify relevant rules
+        '''
         # load an policyset object into memory for fast matching
         for policy in self.policyset.policies:
             #pid = policy.id

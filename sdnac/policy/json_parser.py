@@ -45,6 +45,6 @@ class Parser(object):
         return policyset
     
     def serialize(self, pobj):
-        # returns the serialized version (i.e. string) of object
+        # returns the serialized version of policyset
         pass
     
