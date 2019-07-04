@@ -45,7 +45,7 @@ class Rule(object):
         self.decision = None  # 'permit' or 'deny'
     
     def __str__(self):
-        result = '\t\tID: ' + str(self.id) + '\n'
+        result = '\t\tPID: ' + str(self.pid) + '\n'
         for key, val in self.match.attribute.items():
             result += '\t\t' + key + '=' + val + '\n'
         result += '\t\tDECISION: ' + self.decision + '\n'
@@ -57,6 +57,19 @@ class Rule(object):
     
     def __len__(self):
         return len(self.match.attribute)
+    
+    def to_dict(self):
+        rdict = dict()
+        rdict['id'] = self.id
+        rdict['pid'] = self.pid
+        rdict['pdefault'] = self.pdefault
+        rdict['priority'] = self.priority
+        rdict['decision'] = self.decision
+        rmatch = dict()
+        for key, val in self.match.attribute.items():
+            rmatch[key] = val
+        rdict['match'] = rmatch
+        return rdict
 
 class Match(object):
     def __init__(self):

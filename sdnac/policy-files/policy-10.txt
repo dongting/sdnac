@@ -1,0 +1,11 @@
+[id=1,name=example,default=permit]
+resource.OFPPacketIn.tp_dst=1,decision=deny
+resource.OFPPacketIn.tp_dst=2,decision=deny
+resource.OFPPacketIn.tp_dst=3,decision=deny
+resource.OFPPacketIn.tp_dst=4,decision=deny
+resource.OFPPacketIn.tp_dst=5,decision=deny
+resource.OFPPacketIn.tp_dst=6,decision=deny
+resource.OFPPacketIn.tp_dst=7,decision=deny
+resource.OFPPacketIn.tp_dst=8,decision=deny
+resource.OFPPacketIn.tp_dst=9,decision=deny
+resource.OFPPacketIn.tp_dst=10,decision=deny

@@ -1,6 +1,9 @@
 import json
 from model import * 
 
+DENY = 'deny'
+MAPS = {'dl_addr':['dl_src', 'dl_dst'], 'nw_addr':['nw_src', 'nw_dst'], 'tp_addr':['tp_src', 'tp_dst']}
+
 class Parser(object):
     def __init__(self, policy_file):
         self.policy_file = policy_file
@@ -33,14 +36,24 @@ class Parser(object):
                         continue
                     rule = Rule()
                     rule.pid = policy.id
-                    rule.pdefault = policy.default
+                    rule.pdefault = DENY
                     
                     for elt in line.split(','):
-                        key, val = elt.split('=')
-                        if key == 'decision' or key == 'priority' or key == 'id':
-                            setattr(rule, key, val)
-                        else:
-                            rule.match.attribute[key] = val
+                        try:
+                            key, val = elt.split('=')
+                            if key == 'decision' or key == 'priority' or key == 'id':
+                                setattr(rule, key, val)
+                            else:
+                                if key in MAPS:
+                                    # special keywords
+                                    for mapped_key in MAPS[key]:
+                                        rule.match.attribute[mapped_key] = val
+                                else:
+                                    # regular keywords
+                                    rule.match.attribute[key] = val
+                        except ValueError:
+                            # presence match doesn't need '='
+                            rule.match.attribute[elt] = 'true'
                     policy.rules.append(rule)
         return policyset
     

@@ -1,0 +1,19 @@
+# example policy
+
+[id=1,name=example]
+resource.OFPHello,decision=permit
+resource.OFPFeaturesRequest,decision=permit
+resource.OFPPortStatus,decision=permit
+resource.OFPSwitchFeatures,decision=permit
+resource.OFPSetConfig,decision=permit
+resource.OFPPortStatus,decision=permit
+resource.OFPPacketOut,decision=permit
+resource.OFPEchoRequest,decision=permit
+resource.OFPPacketIn.ethertype=0x806,decision=permit
+resource.OFPPacketIn.ethertype=0x86dd,decision=permit
+resource.OFPPacketIn.nw_proto=1,decision=permit
+resource.OFPPacketIn.tp_src=80,decision=permit
+resource.OFPPacketIn.tp_dst=80,decision=permit
+resource.OFPFlowMod.match.OFPMatch.tp_src=80,decision=permit
+resource.OFPFlowMod.match.OFPMatch.tp_dst=80,decision=permit
+

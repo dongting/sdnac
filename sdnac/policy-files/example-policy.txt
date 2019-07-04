@@ -1,0 +1,12 @@
+# example policy
+
+[id=1,name=example]
+#subject.app=sdnac,decision=permit
+resource.OFPHello,decision=permit
+resource.OFPPacketOut.in_port=2,decision=permit
+resource.OFPPacketIn.in_port=2,decision=permit
+resource.OFPFlowMod.match.OFPMatch.in_port=2,decision=permit
+resource.OFPPacketIn.sport=80,decision=deny
+resource.OFPPacketIn.dport=80,decision=deny
+resource.OFPPacketIn.nw_proto=17,decision=permit
+
